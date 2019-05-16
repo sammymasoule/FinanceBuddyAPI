@@ -15,7 +15,7 @@ namespace FinanceBuddy_API.Controllers
 
         // GET api/income/id
         [Route("api/income/{username}")]
-        public IHttpActionResult GetExpensesByDate(string username, [FromUri]string firstday, [FromUri]string lastday)
+        public IHttpActionResult GetIncomeByDate(string username, [FromUri]string firstday, [FromUri]string lastday)
         {
             var income = incomeService.GetIncome(username, firstday, lastday);
             return Content(HttpStatusCode.OK, income);

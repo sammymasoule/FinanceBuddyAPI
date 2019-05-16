@@ -50,7 +50,7 @@ namespace FinanceBuddy_API.Controllers
             return Content(HttpStatusCode.OK, expenses);
         }
 
-        // POST api/TransItem
+        // POST request for creating an expense for a specific user.
         [Route("api/expenses")]
         public IHttpActionResult Post([FromBody] object value)
         {

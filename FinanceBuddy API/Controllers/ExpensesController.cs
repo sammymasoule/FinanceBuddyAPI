@@ -14,8 +14,8 @@ namespace FinanceBuddy_API.Controllers
         private readonly ExpensesService tiService = new ExpensesService();
 
         // GET request for sum of expenses for specific user.
-        [Route("api/expenses/sum/{username}")]
-        public IHttpActionResult GetExpensesByDate(string username, [FromUri]string firstday, [FromUri]string lastday)
+        [Route("api/expense/sum/{username}")]
+        public IHttpActionResult GetExpensesBy(string username, [FromUri]string firstday, [FromUri]string lastday)
         {
             var expenses = tiService.GetExpenses(username, firstday, lastday);
             //tjek det her
@@ -25,7 +25,7 @@ namespace FinanceBuddy_API.Controllers
         }
 
         // GET request for the sum of a specific category for a specific user
-        [Route("api/expenses/sum/{username}/{category}")]
+        [Route("api/expense/sum/{username}/{category}")]
         public IHttpActionResult GetSumOfCategory(string username, string category, [FromUri]string firstday, [FromUri]string lastday)
         {
             var expenses = tiService.GetAvgExpenses(username, category, firstday, lastday);
@@ -38,7 +38,7 @@ namespace FinanceBuddy_API.Controllers
         }
 
         // GET request for average of categories for all users excluding the user requesting the info.
-        [Route("api/expenses/average")]
+        [Route("api/expense/average")]
         public IHttpActionResult GetAvgOthers(string username, string cat, string firstday, string lastday)
         {
             var expenses = tiService.GetAvgExpensesOthers(username, cat, firstday, lastday);
@@ -51,7 +51,7 @@ namespace FinanceBuddy_API.Controllers
         }
 
         // POST request for creating an expense for a specific user.
-        [Route("api/expenses")]
+        [Route("api/expense")]
         public IHttpActionResult Post([FromBody] object value)
         {
             var json = JObject.Parse(value.ToString());
